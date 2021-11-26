@@ -1,0 +1,47 @@
+<h1>Agregar Productos</h1> <span>{{texto1}}</span>
+<hr>
+<form [formGroup]="miFormulario">
+    <div class="row g-3 align-item-center mb-3">
+        <div class="col-auto">
+            <label class="col-form-label">Nombre:</label>
+        </div>
+        <div class="col-auto">
+            <input class="form-control"
+                   formControlName="nombre">
+        </div>
+        <div class="col-auto">
+            <span class="form-text"
+                  [mensaje]="texto1"
+                  [color]="color"
+                  [valido]="!tieneError('nombre')"
+                  appErrorMsg>
+            </span>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <button class="btn btn-primary"
+                    (click)="cambiarNombre()"> 
+                Guardar
+            </button>
+            &nbsp; <!--Forma de separar en html poco recomendada-->
+            <button class="btn btn-primary"
+                    (click)="cambiarColor()"> 
+                Cambiar Color
+            </button>
+        </div>
+    </div>
+</form>
+<h3 class="mt-5">
+    Formulario</h3>
+<pre>Valor Formulario: {{miFormulario.value | json}}</pre>
+<pre>Validez Formulario: {{miFormulario.valid}}</pre>
+
+    <div class="row"          
+        *custimIf="miFormulario.valid">
+        <div class="col mt-5">
+            <div class="alert alert-primary">
+                Todo esta Ok!
+            </div>
+        </div>
+</div>
